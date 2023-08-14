@@ -1,0 +1,41 @@
+﻿@model AuthModel
+
+<form method="post" asp-action="Register" asp-controller="Authentication">
+    <div class="card p-3">
+        <label asp-for="@Model.FirstName"></label>
+        <input class="form-control my-1" type="text" asp-for="@Model.FirstName" />
+        @if (TempData["FirstNameErr"] != null)
+        {
+            <span>@TempData["FirstNameErr"]</span>
+        }
+        <label asp-for="@Model.LastName"></label>
+        <input class="form-control my-1" type="text" asp-for="@Model.LastName" />
+        @if (TempData["LastNameErr"] != null)
+        {
+            <span>@TempData["LastNameErr"]</span>
+        }
+        <label asp-for="@Model.Username"></label>
+        <input class="form-control my-1" type="text" asp-for="@Model.Username" />
+        @if (TempData["UsernameErr"] != null)
+        {
+            <span>@TempData["UsernameErr"]</span>
+        }
+
+        <label asp-for="@Model.Email"></label>
+        <input class="form-control my-1" type="text" asp-for="@Model.Email" />
+        @if (TempData["EmailErr"] != null)
+        {
+            <span>@TempData["EmailErr"]</span>
+        }
+        <label asp-for="@Model.Password"></label>
+        <input class="form-control my-1" type="text" asp-for="@Model.Password" />
+        @if (TempData["PasswordErr"] != null)
+        {
+            <span>@TempData["PasswordErr"]</span>
+        }
+        <div class="my-1">
+            <input class="btn btn-primary" type="submit" value="Register" />
+            <span><a class="btn btn-link" asp-action="Login">Already have Account Login</a></span>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,21 @@
+﻿@model AuthModel
+
+<form method="post" asp-action="Login" asp-controller="Authentication">
+    <div class="card p-3">
+        @if (TempData["LoginErr"] != null)
+        {
+            <span>@TempData["LoginErr"]</span>
+        }
+
+        <label asp-for="@Model.Username"></label>
+        <input class="form-control my-1" type="text" asp-for="@Model.Username" />
+        <label asp-for="@Model.Password"></label>
+        <input class="form-control my-1" type="text" asp-for="@Model.Password" />
+      
+        <div class="my-1">
+           
+            <input class="btn btn-primary" type="submit" value="Login" />
+            <span><a class="btn btn-link" asp-action="Register">Need an Account Signup</a></span>
+        </div>
+    </div>
+</form>
