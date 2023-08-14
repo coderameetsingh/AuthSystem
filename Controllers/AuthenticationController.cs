@@ -134,7 +134,7 @@ namespace AuthSystem.Controllers
                 if (!string.IsNullOrEmpty(auth.Email))
                 {
                     //check for email
-
+                    
                 }
                 else
                 {
