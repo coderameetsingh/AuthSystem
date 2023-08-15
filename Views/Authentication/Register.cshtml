@@ -6,32 +6,32 @@
         <input class="form-control my-1" type="text" asp-for="@Model.FirstName" />
         @if (TempData["FirstNameErr"] != null)
         {
-            <span>@TempData["FirstNameErr"]</span>
+            <span class="text-danger">@TempData["FirstNameErr"]</span>
         }
         <label asp-for="@Model.LastName"></label>
         <input class="form-control my-1" type="text" asp-for="@Model.LastName" />
         @if (TempData["LastNameErr"] != null)
         {
-            <span>@TempData["LastNameErr"]</span>
+            <span class="text-danger">@TempData["LastNameErr"]</span>
         }
         <label asp-for="@Model.Username"></label>
         <input class="form-control my-1" type="text" asp-for="@Model.Username" />
         @if (TempData["UsernameErr"] != null)
         {
-            <span>@TempData["UsernameErr"]</span>
+            <span class="text-danger">@TempData["UsernameErr"]</span>
         }
 
         <label asp-for="@Model.Email"></label>
         <input class="form-control my-1" type="text" asp-for="@Model.Email" />
         @if (TempData["EmailErr"] != null)
         {
-            <span>@TempData["EmailErr"]</span>
+            <span class="text-danger">@TempData["EmailErr"]</span>
         }
         <label asp-for="@Model.Password"></label>
-        <input class="form-control my-1" type="text" asp-for="@Model.Password" />
+        <input class="form-control my-1" type="password" asp-for="@Model.Password" />
         @if (TempData["PasswordErr"] != null)
         {
-            <span>@TempData["PasswordErr"]</span>
+            <span class="text-danger">@TempData["PasswordErr"]</span>
         }
         <div class="my-1">
             <input class="btn btn-primary" type="submit" value="Register" />

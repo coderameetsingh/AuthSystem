@@ -4,7 +4,7 @@
     <div class="card p-3">
         @if (TempData["LoginErr"] != null)
         {
-            <span>@TempData["LoginErr"]</span>
+            <span class="text-danger">@TempData["LoginErr"]</span>
         }
 
         <label asp-for="@Model.Username"></label>
@@ -16,6 +16,7 @@
            
             <input class="btn btn-primary" type="submit" value="Login" />
             <span><a class="btn btn-link" asp-action="Register">Need an Account Signup</a></span>
+            <span><a class="btn btn-link" asp-action="ResetPassword">Forgot Password?</a></span>
         </div>
     </div>
 </form>
