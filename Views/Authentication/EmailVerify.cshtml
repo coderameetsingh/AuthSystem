@@ -6,3 +6,7 @@
 {
     <h3>@TempData["Message"]</h3>
 }
+@if (TempData["EmailVerifySuccess"] != null)
+{
+    <span class="text-success">@TempData["EmailVerifySuccess"]</span>
+}

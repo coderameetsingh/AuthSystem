@@ -62,7 +62,7 @@ namespace AuthSystem.Controllers
                         $"https://{path}/Authentication/EmailVerify?eid={encodeemail}&token={encodetoken}&ed={encodedate}";
                     var plaintext = "Email is vailed for 10 minutes";
                     _emailService.SendEmail(auth.FirstName + auth.LastName, auth.Email, subject, plaintext, htmlcontent);
-                    ViewBag.Message = "Email Sent Successfully";
+                    TempData["RegisterSuccess"] = "Email Sent Successfully";
                     return View("Register", new AuthModel());
                 }
                 catch (Exception e)
@@ -254,7 +254,7 @@ namespace AuthSystem.Controllers
                         user.Is_Active = true;
                         _db.Auths.Update(user);
                         _db.SaveChanges();
-                        TempData["Message"] = "Email verified successfully";
+                        TempData["EmailVerifySuccess"] = "Email verified successfully";
                         return View();
                     }
                     else
@@ -317,7 +317,7 @@ namespace AuthSystem.Controllers
                         $"https://{path}/Authentication/ChangePassword?eid={encodeemail}&ed={encodedate}";
                     var plaintext = "Email is vailed for 10 minutes";
                     _emailService.SendEmail(auth.FirstName + auth.LastName, auth.Email, subject, plaintext, htmlcontent);
-                    TempData["ResetPasswordErr"] = "Email Sent Successfully";
+                    TempData["ResetPasswordSuccess"] = "Email Sent Successfully";
                     return View("ResetPassword");
                 }
                 catch (Exception e)
@@ -364,23 +364,22 @@ namespace AuthSystem.Controllers
         [HttpPost]
         public IActionResult ChangePassword(AuthModel auth)
         {
-            
-                var user = _db.Auths.FirstOrDefault(u => u.Email == auth.Email);
-                if (user != null)
-                {
-                    // Update the password in the database
-                    user.Password = auth.Password;
-                    _db.Auths.Update(user);
-                    _db.SaveChanges();
-                    TempData["ChangePasswordSuccess"] = "Changed Password Successfully!";
-                    return View();
-                }
-                else
-                {
-                    TempData["ChangePasswordErr"] = "User not found!";
-                }
-           
-            return View(auth);
+
+            var user = _db.Auths.FirstOrDefault(u => u.Email == auth.Email);
+            if (user != null)
+            {
+                // Update the password in the database
+                user.Password = auth.Password;
+                _db.Auths.Update(user);
+                _db.SaveChanges();
+                TempData["ChangePasswordSuccess"] = "Changed Password Successfully!";
+                return RedirectToAction("PasswordChangeSuccess");
+            }
+            else
+            {
+                TempData["ChangePasswordErr"] = "User not found!";
+                return View();
+            }
         }
 
         public IActionResult PasswordChangeSuccess()

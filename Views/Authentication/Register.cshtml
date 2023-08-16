@@ -1,4 +1,13 @@
 ﻿@model AuthModel
+@if (TempData["Err"] != null)
+{
+    <span class="text-danger">@TempData["Err"]</span>
+}
+
+@if (TempData["RegisterSuccess"] != null)
+{
+    <span class="text-success">@TempData["RegisterSuccess"]</span>
+}
 
 <form method="post" asp-action="Register" asp-controller="Authentication">
     <div class="card p-3">
