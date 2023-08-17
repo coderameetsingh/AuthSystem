@@ -19,7 +19,7 @@ namespace AuthenticationSystem.Services
             using (var client = new SmtpClient())
             {
                 client.Connect("smtp-mail.outlook.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
-                client.Authenticate("manmeetsingh.hsn@outlook.com", "Waheguru@0");
+                client.Authenticate("manmeetsingh.hsn@outlook.com", "");//replave the string with your password
                 client.Send(message);
                 client.Disconnect(true);
             }

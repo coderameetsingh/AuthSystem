@@ -335,8 +335,8 @@ namespace AuthSystem.Controllers
         {
             var query = Request.QueryString.ToUriComponent();
             NameValueCollection param = HttpUtility.ParseQueryString(query);
-            var eid = param["eid"];
-            var ed = param["ed"];
+            //var eid = param["eid"];
+            //var ed = param["ed"];
             byte[] emailbyte = Convert.FromBase64String(param["eid"]);
             string decodedemail = Encoding.UTF8.GetString(emailbyte);
             byte[] datebyte = Convert.FromBase64String(param["ed"]);
